@@ -1,45 +1,43 @@
 public class Fila {
-    public int tamanho;
-    public Celula frente;
-    public Celula tras;
+    private int tamanho;
+    private Celula frente;
+    private Celula tras;
 
     Fila(){
-        this.frente = new Celula("-1");
+        this.frente = null;
         this.tras = frente;
+        this.tamanho = 0;
+
     }
 
     public boolean vazia(){
-        return this.frente == this.tras;
+        return this.frente == null;
     }
 
-    public void enfileirar(String c){
-        Celula celula = new Celula(c);
-        if(this.frente == this.tras){
-            this.frente.prox = celula;
-            this.tras = celula;
+    public void enfileirar(String operacao){
+        Celula celula = new Celula(operacao);
+        if(vazia()){
+            frente = celula;  
         } else{
             this.tras.prox = celula;
+            }
             this.tras = celula;
-        }
-        
-        this.tamanho++;
+            tamanho++;
     }
 
-    public Celula desenfileirar(){
-        if(this.vazia()){
+    public String desenfileirar(){
+        if(vazia()){
             System.out.println("Fila vazia.");
             return null;
         } else{
-            Celula aux = this.frente.prox;
-            this.frente.prox = aux.prox;
-            aux.prox = null;
-            if(aux == this.tras){
-                this.tras = this.frente;
+            String operacao = frente.operacao;
+            frente = frente.prox;
+            if(frente == null){
+                tras = null;
             }
 
             this.tamanho--;
-
-            return aux;
+            return operacao;
         }
 
         
@@ -49,11 +47,12 @@ public class Fila {
         if(this.vazia()){
             System.out.println("Fila vazia.");;
         }else{
-            Celula aux = this.frente.prox;
+            Celula aux = frente;
             while (aux != null) {
-                System.out.println(aux.elemento);
+                System.out.println(aux.operacao+ " ");
                 aux = aux.prox;
             }
+            System.out.println();
         }
     }
 }

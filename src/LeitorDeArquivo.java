@@ -3,20 +3,22 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LeitorDeArquivo {
+    public Fila lerArquivo(String caminhoDoArquivo) {
+        Fila fila = new Fila();
 
-    public void lerArquivo(String caminhoDoArquvo) {
-        StringBuilder conteudo = new StringBuilder();
-
-        try (BufferedReader leitor = new BufferedReader(new FileReader(caminhoDoArquvo))) {
+        //lê um arquivo linha por linha, divide cada linha em substrings e os adiciona a uma fila.
+        try (BufferedReader leitor = new BufferedReader(new FileReader(caminhoDoArquivo))) {
             String linha;
             while ((linha = leitor.readLine()) != null) {
-                conteudo.append(linha).append("\n");
-                // System.out.println(linha);
+                String[] tokens = linha.split("\\s+");
+                for (String token : tokens) {
+                    fila.enfileirar(token);
+                }
             }
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao ler o arquivo.");
             e.printStackTrace();
         }
-        System.out.print(conteudo.toString());
+        return fila;
     }
 }

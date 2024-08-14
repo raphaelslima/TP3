@@ -2,12 +2,16 @@ public class Principal {
     public static void main(String[] args) throws Exception {
 
         LeitorDeArquivo leitortxt = new LeitorDeArquivo();
-        leitortxt.lerArquivo("C:\\Users\\fabia\\OneDrive\\Desktop\\Saida\\calculadora.txt");
-        //System.out.println(conteudo);
+        Fila fila = leitortxt.lerArquivo("C:\\Users\\fabia\\OneDrive\\Desktop\\Saida\\calculadora.txt");
+        
+        
+
+        System.out.println("Operadores na fila");
+        fila.imprimir();
         //System.out.println("---------Teste Pilha------------");
        // System.out.println("---------Teste Empilha------------");
-        Pilha pilhaDeDados = new Pilha();
-       // pilhaDeDados.empilhar("1");
+      //  Pilha pilhaDeDados = new Pilha();
+       // pilhaDeDados.empilhar();
        // pilhaDeDados.empilhar("+");
        // pilhaDeDados.empilhar("3");
         //System.out.println("---------Teste Imprimi------------");
@@ -22,7 +26,7 @@ public class Principal {
 
        // System.out.println("---------Teste Fila------------");
         //System.out.println("---------Teste Enfileirar------------");
-        Fila filaDedados = new Fila();
+       // Fila filaDedados = new Fila();
       //  filaDedados.enfileirar("1");
        // filaDedados.enfileirar("+");
        // filaDedados.enfileirar("2");

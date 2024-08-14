@@ -1,6 +1,6 @@
 public class Pilha {
-    public Celula topo;
-    public int tamanho;
+    private Celula topo;
+    private int tamanho;
 
     Pilha(){
         this.topo = null;
@@ -11,15 +11,14 @@ public class Pilha {
         return this.topo == null;
     }
 
-    public void empilhar(String v){
-
-        Celula c = new Celula(v);
-
-        c.prox = this.topo;
-        this.topo = c;
-        this.tamanho++;
-
-    }
+    public void empilhar(String operacao, int resultado){
+        Celula celula = new Celula(operacao, resultado);
+        celula.prox = topo;
+        topo = celula;
+        tamanho++;
+    
+        }
+    
 
     public Celula desimpilhar(){
 
@@ -27,7 +26,7 @@ public class Pilha {
             System.out.println("Pilha vazia");
             return null;
         }else{
-            Celula aux = this.topo;
+            Celula aux = topo;
             this.topo = aux.prox;
             aux.prox = null;
             this.tamanho--;
@@ -46,12 +45,51 @@ public class Pilha {
             System.out.println("Pilha vazia");
         } else{
             Celula aux = topo;
-            int i = 0;
-            while (i < this.tamanho) {
-                System.out.println(aux.elemento);
+            while (aux != null) {
+                System.out.println(aux.operacao +" = " + aux.resultado);
                 aux = aux.prox;
-                i++;
+                
             }
         }   
     }
+  public void processar(String operador){
+    if (vazia() || topo.prox == null) {
+        System.out.println("Pilha não tem elementos suficientes para a operação.");
+        return;
+    }
+
+    Celula a = desimpilhar();
+    Celula b = desimpilhar();
+    int resultado = 0;
+    String operacao = "";
+
+    switch (operador) {
+        case "+":
+            resultado = b.resultado + a.resultado;
+            operacao = "(" + b.operacao + " + " + a.operacao + ")";
+            break;
+        case "-":
+            resultado = b.resultado - a.resultado;
+            operacao = "(" + b.operacao + " - " + a.operacao + ")";
+            break;
+        case "*":
+            resultado = b.resultado * a.resultado;
+            operacao = "(" + b.operacao + " * " + a.operacao + ")";
+            break;
+        case "/":
+            if (a.resultado != 0) {
+                resultado = b.resultado / a.resultado;
+                operacao = "(" + b.operacao + " / " + a.operacao + ")";
+            } else {
+                System.out.println("Divisão por zero.");
+                return;
+            }
+            break;
+        default:
+            System.out.println("Operador desconhecido.");
+            return;
+    }
+
+    empilhar(operacao, resultado);
+  }
 }
