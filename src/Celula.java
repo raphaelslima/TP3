@@ -1,14 +1,17 @@
 public class Celula {
-    public String elemento;
-    public Celula prox;
+    public String convertida;
+    public int resultado;
+    public Celula proximo;
 
-    public Celula(String elemento) {
-        this.elemento = elemento;
-        this.prox = null;
+    public Celula(String convertida, int resultado) {
+        this.convertida = convertida;
+        this.resultado = resultado;
+        this.proximo = null;
     }
 
-    public Celula(String elemento, Celula prox) {
-        this.elemento = elemento;
-        this.prox = prox;
+    public Celula(String convertida, int resultado, Celula proximo) {
+        this.convertida = convertida;
+        this.resultado = resultado;
+        this.proximo = proximo;
     }
 }
