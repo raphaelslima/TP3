@@ -1,5 +1,14 @@
 public class App {
     public static void main(String[] args) throws Exception {
+
+        //------------------------------------------
+        String expressao = LerEscrever.ler(); //Lê uma linha no terminal
+
+        
+        
+        LerEscrever.escrever(expressao); //imprime a string resultado
+        //------------------------------------------
+        
         System.out.println("---------Teste Pilha------------");
         System.out.println("---------Teste Empilha------------");
         Pilha pilhaDeDados = new Pilha();
