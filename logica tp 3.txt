@@ -1,0 +1,64 @@
+5 9 3 
+5 12 4 2 
+5 12 8
+5 96 7 
+5 103
+= 515
+
+5 9 3 
+5 (9 + 3)
+5 (9 + 3) 4 2
+5 (9 + 3) (4 * 2)
+5 ((9 + 3) * (4 * 2)) 7
+5 (((9 + 3) * (4 * 2)) + 7)
+5 * (((9 + 3) * (4 * 2)) + 7)
+
+-------------------------------------------------------------------------------------------------------------------
+
+classe celula:
+string operacao //vai armazenar a string da operação na notação infixa: "(a operador b)"
+int resultado //vai armazenar o resultado da operação dentro da variável "operacao"
+//ambos devem ser inicializados com o mesmo valor
+
+-------------------------------------------------------------------------------------------------------------------
+
+Esquema da pilha: as letras representam os números sendo empilhados e os números representam o operador.
+
+	      v- provavelmente não é necessário empilhar o operador, só detectar ele e-
+	      |  jogar dentro do switch pra realizar a operação.
+  0   1   2   3   4 - posições das células na pilha.
+| a | b | c | 1 |   | - células na pilha.
+    -------------
+
+  0      1      2   3   4   5
+| a | (b 1 c) | d | e | 2 |   |
+    -----------
+
+  0      1         2      3   4
+| a | (b 1 c) | (d 2 e) | 3 |   |
+
+  0           1           2   3
+| a | (b 1 c) 3 (d 2 e) | 7 |   | 
+
+-------------------------------------------------------------------------------------------------------------------
+
+switch (operador){ //esse switch usa o operador na ultima e penultima células empilhadas, e então coloca o resultado dessa operação na penultima. Em seguida a ultima célula deve ser desempilhada, e a punultima (que agora se tornou a ultima) vai possuir esse valor.
+	case "+":
+		b.setResultado(a.getResultado() + b.getResultado());
+		break;
+
+	case "-":
+		b.setResultado(b.getResultado() - a.getResultado()); //inverter a ordem do A e B pra divisão e subtração
+		break;
+
+	case "/":
+		b.setResultado(b.getResultado() / a.getResultado());
+		break;
+	
+	case "*":
+		b.setResultado(a.getResultado() * b.getResultado());
+		break;
+}
+além desse switch para o resultado, também deve ser feita a lógica para concatenar as strings do atributo "operacao" das ultimas duas células empilhadas. Da mesma forma que com a lógica do "resultado", o valor concatenado das duas se torna o novo valor de "operacao" da penultima célula, e então a ultima é desempilhada. Dessa forma, a nova ultima célula vai conter a variável operacao = (a operador b) e a variável resultado = (resultado da operação em "operacao")
+
+no final da execução, vai haver uma célula na pilha, em seu atributo "operacao" vai ter a operacao em notação infixa completa, e em seu atributo "resultado" vai ter o resultado dessa mesma operação. Aí é só concatenar os dois e imprimir.

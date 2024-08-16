@@ -3,37 +3,38 @@ public class Fila {
     public Celula frente;
     public Celula tras;
 
-    Fila(){
-        this.frente = new Celula("-1");
+    Fila() {
+        this.frente = new Celula("-1", -1); // Inicializa com um valor inválido
         this.tras = frente;
+        this.tamanho = 0;
     }
 
-    public boolean vazia(){
+    public boolean vazia() {
         return this.frente == this.tras;
     }
 
-    public void enfileirar(String c){
-        Celula celula = new Celula(c);
-        if(this.frente == this.tras){
-            this.frente.prox = celula;
+    public void enfileirar(String convertida, int resultado) {
+        Celula celula = new Celula(convertida, resultado);
+        if (this.frente == this.tras) {
+            this.frente.proximo = celula;
             this.tras = celula;
-        } else{
-            this.tras.prox = celula;
+        } else {
+            this.tras.proximo = celula;
             this.tras = celula;
         }
-        
+
         this.tamanho++;
     }
 
-    public Celula desenfileirar(){
-        if(this.vazia()){
+    public Celula desenfileirar() {
+        if (this.vazia()) {
             System.out.println("Fila vazia.");
             return null;
-        } else{
-            Celula aux = this.frente.prox;
-            this.frente.prox = aux.prox;
-            aux.prox = null;
-            if(aux == this.tras){
+        } else {
+            Celula aux = this.frente.proximo;
+            this.frente.proximo = aux.proximo;
+            aux.proximo = null;
+            if (aux == this.tras) {
                 this.tras = this.frente;
             }
 
@@ -41,18 +42,16 @@ public class Fila {
 
             return aux;
         }
-
-        
     }
 
-    public void imprimir(){
-        if(this.vazia()){
-            System.out.println("Fila vazia.");;
-        }else{
-            Celula aux = this.frente.prox;
+    public void imprimir() {
+        if (this.vazia()) {
+            System.out.println("Fila vazia.");
+        } else {
+            Celula aux = this.frente.proximo;
             while (aux != null) {
-                System.out.println(aux.elemento);
-                aux = aux.prox;
+                System.out.println("Convertida: " + aux.convertida + ", Resultado: " + aux.resultado);
+                aux = aux.proximo;
             }
         }
     }
