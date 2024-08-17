@@ -20,5 +20,7 @@ Fabian Bernardes
 
 -> Pedro Ávila e Nathan Siqueira:
 
-->Fabian Bernardes: 
+-> Fabian Bernardes: 
+
+-> João Pedro: 
 
