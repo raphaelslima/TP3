@@ -8,6 +8,7 @@ public class App {
         Pilha pilha = new Pilha();
         //Nathan e Pedro: método percorrePilha retorna a expressão convertida e o resultado final como String
         String resultado = pilha.percorrerPilha();
+        // Nathan e Pedro: Impressão da expressão convertida com o resultado.
         System.out.println("Expressão convertida: " + resultado);
 
     }
