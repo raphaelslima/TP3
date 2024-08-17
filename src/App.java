@@ -6,7 +6,9 @@ public class App {
         // resultado, passando "expressao" por parâmtro.
         // LerEscrever.escrever(expressao); // imprime a string resultado
         Pilha pilha = new Pilha();
-        pilha.percorrerPilha();
+        //Nathan e Pedro: método percorrePilha retorna a expressão convertida e o resultado final como String
+        String resultado = pilha.percorrerPilha();
+        System.out.println("Expressão convertida: " + resultado);
 
     }
 }
