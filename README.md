@@ -22,5 +22,4 @@ Fabian Bernardes
 
 -> Fabian Bernardes: Nova Branch com a criação da nova classe LeitorDeArquivo para ler um possivel txt, o que não foi necessário. Alteração da classe Fila para que a expressão fosse separada em substrings e enfileirasse, só que é utilizado um vetor para separar os caracteres.
 
--> João Pedro: Criação da lógica, implementação e explicação para o restante do grupo. Além disso, responsavel pela classe Main, alem de alterações pequenas em outras classes como: Celula e a adição da classe LerEscrever invocados na classe Main. 
-
+-> João Pedro: Criação da lógica, implementação e explicação para o restante do grupo. Além disso, responsÁvel pela classe Main. Além das pequenas alterações em outras classes, como a classe Célula, e da adição da classe LerEscrever, que é invocada na classe Main.
